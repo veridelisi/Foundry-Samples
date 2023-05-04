@@ -12,16 +12,21 @@ contract AccessModifiersTest is Test {
     }
 
     function testAccessModifiers() external {
-        child.setValue(350);
-        assertEq(child.getValue(), 350, "expected to be 350");
+        child.setValue(100);
+        assertEq(child.getValue(), 100, "expected to be 100");
+        
+        child.setValue(5);
+        assertLt(child.getValue(), 10, "expected to be less than 10");
+        
+        child.setValue(10);
+        assertLe(child.getValue(), 10, "expected to be less than 10 or equal to 10 ");
+        
+        child.setValue(100);
+        assertGt(child.getValue(), 10, "expected to be greater than 10");
+        
+        child.setValue(10);
+        assertGe(child.getValue(), 10, "expected to be greater than 10 or equal to 10")
 
-        child.setValue(878);
-        assertEq(child.getValue(), 878, "expected to be 878");
-
-        child.setValue(1_000);
-        assertEq(child.getValue(), 1_000, "expected to be 1000");
-
-        child.setValue(1);
-        assertEq(child.getValue(), 1, "expected to be 1");
+       
     }
 }
