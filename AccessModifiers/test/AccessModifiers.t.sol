@@ -26,6 +26,9 @@ contract AccessModifiersTest is Test {
         
         child.setValue(10);
         assertGe(child.getValue(), 10, "expected to be greater than 10 or equal to 10")
+        
+        child.setValue(1 ether);
+        assertEqDecimal(child.getValue(), 1e18 wei, 18, "expected to be 18 decimals")
 
        
     }
