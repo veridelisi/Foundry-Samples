@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.19;
 
 import "forge-std/Test.sol";
 import "../src/AccessModifiers.sol";
@@ -14,6 +14,9 @@ contract AccessModifiersTest is Test {
     function testAccessModifiers() external {
         child.setValue(100);
         assertEq(child.getValue(), 100, "expected to be 100");
+
+        child.setValue(a);
+        assertEq(child.getValue(),a, "expected to be a");
         
         child.setValue(5);
         assertLt(child.getValue(), 10, "expected to be less than 10");
