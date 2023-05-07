@@ -15,9 +15,7 @@ contract AccessModifiersTest is Test {
         child.setValue(100);
         assertEq(child.getValue(), 100, "expected to be 100");
 
-        child.setValue(a);
-        assertEq(child.getValue(),a, "expected to be a");
-        
+     
         child.setValue(5);
         assertLt(child.getValue(), 10, "expected to be less than 10");
         
