@@ -23,12 +23,20 @@ contract BasicBankV2Test is Test {
 
     function testRemoveEther() external {
         vm.deal(address(this), 1 ether);
+        emit log_named_decimal_uint("Start : User Account Balance", address(this).balance, 18);
+      
         basicBankV2.addEther{value: 1 ether}();
-
-        vm.expectRevert();
-        basicBankV2.removeEther(2 ether);
+         emit log_named_decimal_uint("User Account Balance after addEther", address(this).balance, 18);
+         emit log_named_decimal_uint("Contract Account Balance after addEther", address(basicBankV2).balance, 18);
+          
+           vm.expectRevert();
+     
+          basicBankV2.removeEther(2 ether);
 
         basicBankV2.removeEther(1 ether);
+         emit log_named_decimal_uint("User Account Balance after removeEther", address(this).balance, 18);
+          emit log_named_decimal_uint("Contract Account Balance after removeEther", address(basicBankV2).balance, 18);
+       
         assertEq(
             address(this).balance,
             1 ether,
