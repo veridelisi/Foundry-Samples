@@ -1,14 +1,16 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.17;
 
 contract BasicStorage {
-    uint256 private x;
+     uint256 private x = 52; //slot 0
+     uint256 private y = 43; //slot 1
 
     function setX(uint256 newValue) public {
-        // your code here
+        x = newValue;
     }
 
     function getX() public view returns (uint256) {
-        // your code here
-    }
+        return x;
+}
+
 }
