@@ -10,8 +10,14 @@ contract BlockNumber {
      */
 
     address public lastCaller;
+    uint256 public time ;
 
     function callMe() external {
-        /// your code here
+
+         require(block.number >= time, "You need to wait new Block");
+         lastCaller = msg.sender;
+         time = block.number + 1;
+
     }
 }
+
