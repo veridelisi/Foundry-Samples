@@ -10,7 +10,28 @@ contract CrossContract {
         address _priceOracle1,
         address _priceOracle2
     ) external view returns (uint256) {
-        // your code here
+    
+      //Call variable
+      if(PriceOracle1(_priceOracle1)._price() < PriceOracle2(_priceOracle2)._price()){
+            return PriceOracle1(_priceOracle1)._price();
+        }
+        else {
+         return PriceOracle2(_priceOracle2)._price();
+        }
+        
+        /**
+         //Call function
+         
+         if(PriceOracle1(_priceOracle1).price() < PriceOracle2(_priceOracle2).price()){
+            return PriceOracle1(_priceOracle1).price();
+        }
+        else {
+         return PriceOracle2(_priceOracle2).price();
+        }
+        
+         */
+        
+        
     }
 }
 
