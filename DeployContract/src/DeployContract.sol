@@ -9,6 +9,6 @@ contract Deployer {
     */
 
     function deployContract() public view returns (address) {
-        // your code here
+         return address(this);
     }
 }
