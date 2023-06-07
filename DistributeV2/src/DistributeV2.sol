@@ -13,7 +13,18 @@ contract DistributeV2 {
 
     constructor() payable {}
 
-    function distributeEther(address[] memory addresses) public {
-        // your code here
+     function distributeEther(address[] memory addresses) public {
+        uint amount = address(this).balance / (addresses.length);
+              for (uint i=0; i < addresses.length; i++){
+                  // payable(addresses[i]).transfer(amount);
+                  (bool sent,) = payable(addresses[i]).call{value: 0}("");
+                    if (sent==true){
+                        (bool sent,) = payable(addresses[i]).call{value: amount}("");
+                    }
+                
+              }
     }
+
+   
+    receive() external payable {}
 }
