@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.19;
 
 import "forge-std/Test.sol";
 import "../src/DistributeV2.sol";
+
+contract ReluctantReceiver {}
 
 contract DistributeV2Test is Test {
     DistributeV2 public distributeV2;
@@ -54,7 +56,11 @@ contract DistributeV2Test is Test {
             1 ether,
             "balance of distributeV2 contract is not 0 ether"
         );
+        emit log_named_uint("Address0", addresses[0].balance);
+        emit log_named_uint("Address1", addresses[1].balance);
+        emit log_named_uint("Address2", addresses[2].balance);
+        emit log_named_uint("Address3", addresses[3].balance);
+        emit log_named_uint("Address Contract", address(distributeV2).balance);
+
     }
 }
-
-contract ReluctantReceiver {}
